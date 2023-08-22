@@ -11,8 +11,33 @@
     LG
     <td align="center"><a href="XXXX" class="nl"><img src="/gwy/XXXX.png" style="margin: 15px 15px;" width="180" height="180"></a></td> 
 -->
+function UpdateFormAction() {
+  var url = document.getElementById("myDropdown").value;
+  document.getElementById("myForm").action = url;
+}
 
-    
+<div class="custom-select" style="width:200px;">
+  <select id="myDropdown">
+    <option value="http://www.google.com/search">Google</option>
+    <option value="http://www.bing.com/search">Bing</option>
+    <option value="https://duckduckgo.com/?q=">Duckduckgo</option>
+  </select>
+</div>
+<div class="search-bar">
+  <form id="myForm" target="_blank" method="get" action="???" onsubmit="UpdateFormAction()">
+    <div style="border:1px solid black;padding:4px;width:20em;">
+      <table border="0" cellpadding="0">
+        <tr>
+          <td>
+            <input type="text" name="q" size="25" maxlength="255" value="" />
+            <input type="submit" value="Search" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+
 <br> <br> <br> <br> <br> <br>
 
 <table> <table style="margin-left:15;margin-right:auto;"> <tbody> <tr>
@@ -80,14 +105,20 @@
 <a href="XXXX">XXXX</a> 
 <a href="XXXX">XXXX</a> 
 <a href="XXXX">XXXX</a> 
-<a href="XXXX">XXXX</a>
-<a href="https://identifive.com/">IdentiFive</a>
-<a href="https://restofworld.org/">RestOfWorld</a> 
-<a href="https://longreads.com/">Longreads</a> 
-<a href="https://inqld.com.au/">InQLD</a>
+<a href="XXXX">XXXX</a> 
+<a href="XXXX">XXXX</a> 
+<a href="XXXX">XXXX</a> 
+<a href="https://chiptune.app/browse">Chiptune -arty</a> 
+<a href="https://fa22.thisisneverthat.com/">Ascii Camera -arty</a> 
+<a href="https://softglossary.space/inspiration">SoftGlossary -arty</a> 
+<a href="https://snes.party/">SnesParty -game</a>
+<a href="https://identifive.com/">IdentiFive -game</a>
+<a href="https://restofworld.org/">RestOfWorld -news</a> 
+<a href="https://longreads.com/">Longreads -lit</a> 
+<a href="https://inqld.com.au/">InQLD -news</a>
 <a href="https://www.kickstarter.com/?ref=nav">Kickstarter</a>
-<a href="https://random.garbageday.email/">Garbageday</a>
-<a href="https://pixeljoint.com/">PixelJoint</a>
+<a href="https://random.garbageday.email/">Garbageday -random</a>
+<a href="https://pixeljoint.com/">PixelJoint -arty</a>
 <a href="https://www.phylopic.org/">Phylopic</a>
 <a href="https://publicdomainreview.org/collections/">
         
