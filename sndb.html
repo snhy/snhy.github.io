@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<audio id="myAudio" src="/snd/sample.mp3"></audio>
+
+<script>
+  var audio = document.getElementById("myAudio");
+  var btn = document.getElementById("myBtn");
+
+  btn.onclick = function() {
+    if (audio.paused) {
+      audio.play();
+      btn.innerHTML = "Pause Audio";
+    } else {
+      audio.pause();
+      btn.innerHTML = "Play Audio";
+    }
+  };
+</script>
+
+
+
+
+<button id="myBtn">Play Audio</button>
+
+</body>
+</html> 
