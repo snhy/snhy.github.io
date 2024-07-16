@@ -2,41 +2,6 @@
 <html>
 <body>
 
-  <div class="container">
-    <div class="center">
-      <button id="sample">sample</button>
-      <button id="boo">boo</button>
-      <button id="victory">victory</button>
-      <button id="nope">nope</button>
-      <button id="gasp">gasp</button>
-    </div>
-  </div>
-
-  .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-  width: 100px;
-  height: 100px;
-}
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-button {
-  min-width: 80px;
-  height: 40px;
-  margin-left: 10px;
-  border-radius: 4px;
-  border: 1px solid plum;
-  cursor: pointer;
-  color: purple;
-  font-weight: 600;
-}
-
  function play_sound(clicked_id) {
     var audio = new Audio(clicked_id + ".mp3");
     audio.play();
