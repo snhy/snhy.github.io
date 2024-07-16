@@ -2,17 +2,8 @@
 <html>
 <body>
 
-<script>
-    function PlaySound(sample) {
-        alert("On Press of "+sample);
-        var path = "\snd\"
-        var snd = new Audio(path + sample + ".mp3");
-        snd.play();
-    }
-</script>
-
-<button onclick="PlaySound('sample')"> button1</button>
-<button onclick="PlaySound('melody2')"> button2</button>
+<audio id="sample" src="\snd\sample.mp3"></audio>
+<button onclick="document.getElementById('sample').play()">Sample!</button>
  
 </body>
 </html> 
