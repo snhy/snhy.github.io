@@ -37,7 +37,10 @@ button {
   font-weight: 600;
 }
 
-
+ function play_sound(clicked_id) {
+    var audio = new Audio(clicked_id + ".mp3");
+    audio.play();
+  }
 
 
 </body>
