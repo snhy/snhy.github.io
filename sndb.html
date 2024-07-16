@@ -2,19 +2,17 @@
 <html>
 <body>
 
- <script type="text/javascript">
-      function play_sound(clicked_id) {
-        var audio = new Audio(/snd/clicked_id + ".mp3");
-        audio.play();
-      }
-    </script>
+<script>
+    function PlaySound(sample) {
+        alert("On Press of "+sample);
+        var path = "snd\"
+        var snd = new Audio(\snd\ + sample + ".mp3");
+        snd.play();
+    }
+</script>
 
-       <button id="sample" onClick="play_sound(this.id)">sample</button>
-        <button id="boo" onClick="play_sound(this.id)">boo</button>
-        <button id="victory" onClick="play_sound(this.id)">victory</button>
-        <button id="nope" onClick="play_sound(this.id)">nope</button>
-        <button id="gasp" onClick="play_sound(this.id)">gasp</button>
-
-
+<button onclick="PlaySound('sample')"> button1</button>
+<button onclick="PlaySound('melody2')"> button2</button>
+ 
 </body>
 </html> 
