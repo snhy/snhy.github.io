@@ -2,11 +2,17 @@
 <html><head><title>soundz</title></head>
 <body style="background-color:#000000;">
  
-<audio id="zoidwoop" src="\snd\zoidwoop.mp3"></audio> 
-<audio id="mariodead" src="\snd\mariodead.wav"></audio>
+ <a onclick="myAudioFunction('zoidwoops');"><img src="zoidberg.png"> </a>
+ <a onclick="myAudioFunction('mariodies');"><img src="mario.png"> </a>
  
-<button onclick="document.getElementById('zoidwoop').play()"><img src="/snd/zoidberg.png" style="margin: 15px 15px;" width="180" height="180"></button>
-<button onclick="document.getElementById('mariodead').play()">Mario dies</button>
- 
+ <script>
+     var zoidwoops = new Audio('zoidwoops.mp3');
+     var mariodies = new Audio('mariodies.mp3');
+     function myAudioFunction(letter) {
+         if(letter == 'zoidwoops') {zoidwoops.play();
+         } else if(letter == 'mariodies') {mariodies.play();
+         }
+     }
+ </script>
 </body>
 </html> 
