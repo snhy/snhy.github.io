@@ -13,24 +13,28 @@
         padding: 0 10px;
     }
 
+    /* First main image */
     .main-image {
-        width: 50%;       /* smaller image */
-        max-width: 300px; /* limits on big screens */
+        width: 50%;
+        max-width: 250px;
         height: auto;
         margin: 20px auto;
         display: block;
     }
 
+    /* Section spacing */
     .section {
         margin: 30px 0;
     }
 
+    /* Section titles */
     .section-title {
-        text-align: center; /* centered text */
+        text-align: center;
         margin: 0 0 10px 0;
         font-size: 1.5em;
     }
 
+    /* Icon grids */
     .icon-grid {
         display: flex;
         flex-wrap: wrap;
@@ -43,19 +47,19 @@
         text-align: center;
     }
 
-    .icon-grid img {
-        width: 120px;
-        height: 120px;
-        max-width: 20vw; /* scales on smaller screens */
-        height: auto;
-        display: block;
-    }
-
+    /* Large icons (first 11) */
     .large-icon-grid img {
-        width: 150px;     /* slightly smaller than before */
-        max-width: 25vw;
+        width: 150px;
+        height: auto;
     }
 
+    /* Smaller icons (other sections) */
+    .small-icon-grid img {
+        width: 120px;
+        height: auto;
+    }
+
+    /* Links */
     .links {
         margin: 30px 0;
         display: flex;
@@ -70,24 +74,27 @@
         font-size: 1em;
     }
 
+    /* Responsive adjustments */
     @media (max-width: 600px) {
-        .section-title {
-            font-size: 1.2em;
-        }
-
-        .icon-grid img {
-            width: 80px;
-            max-width: 40vw;
-        }
-
+        /* First 11 icons: 3 across */
         .large-icon-grid img {
-            width: 120px;
-            max-width: 50vw;
+            width: 28vw;  /* roughly 3 per row with gap */
+            max-width: 120px;
+        }
+
+        /* Smaller icons: reduce spacing slightly */
+        .small-icon-grid img {
+            width: 25vw;
+            max-width: 100px;
         }
 
         .main-image {
-            width: 70%;
+            width: 60%;
             max-width: 200px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
         }
     }
 </style>
@@ -96,7 +103,7 @@
 
 <img src="/gwy/water.png" alt="Gateway" class="main-image">
 
-<!-- Large icons -->
+<!-- First 11 large icons -->
 <div class="section large-icon-grid icon-grid">
     <a href="http://www.bom.gov.au/products/IDR663.loop.shtml"><img src="/gwy/bom.png" alt="BOM"></a>
     <a href="http://www.bom.gov.au/qld/forecasts/brisbane.shtml"><img src="/gwy/bom2.png" alt="BOM Brisbane"></a>
@@ -114,7 +121,7 @@
 <!-- Smaller sections -->
 <div class="section">
     <div class="section-title">BLUG</div>
-    <div class="icon-grid">
+    <div class="icon-grid small-icon-grid">
         <a href="https://www.yankodesign.com"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
         <a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a>
         <a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="Pixel Joint"></a>
@@ -124,7 +131,7 @@
 
 <div class="section">
     <div class="section-title">3D</div>
-    <div class="icon-grid">
+    <div class="icon-grid small-icon-grid">
         <a href="https://www.printables.com/"><img src="/gwy/printables.png" alt="Printables"></a>
         <a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" alt="Cults3D"></a>
         <a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" alt="Thangs"></a>
@@ -133,7 +140,7 @@
 
 <div class="section">
     <div class="section-title">etc</div>
-    <div class="icon-grid">
+    <div class="icon-grid small-icon-grid">
         <a href="https://www.iloveimg.com/"><img src="/gwy/loveimg.png" alt="ILoveImg"></a>
         <a href="https://www.photopea.com/"><img src="/gwy/ppea.png" alt="Photopea"></a>
         <a href="https://www.flaticon.com/"><img src="/gwy/flaticon.png" alt="Flaticon"></a>
