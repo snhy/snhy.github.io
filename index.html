@@ -13,7 +13,7 @@
         padding: 0 10px;
     }
 
-    /* First main image */
+    /* Main image */
     .main-image {
         width: 50%;
         max-width: 250px;
@@ -45,6 +45,14 @@
     .icon-grid a {
         display: block;
         text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect */
+    .icon-grid a:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px tomato;
+        border-radius: 10px;
     }
 
     /* Large icons (first 11) */
@@ -72,6 +80,11 @@
         color: tomato;
         text-decoration: none;
         font-size: 1em;
+        transition: color 0.3s ease;
+    }
+
+    .links a:hover {
+        color: #fff;
     }
 
     /* Responsive adjustments */
@@ -82,7 +95,7 @@
             max-width: 120px;
         }
 
-        /* Smaller icons: reduce spacing slightly */
+        /* Smaller icons: comfortable spacing */
         .small-icon-grid img {
             width: 25vw;
             max-width: 100px;
