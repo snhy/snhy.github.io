@@ -5,106 +5,54 @@
     <style>
         body {
             background-color: #000;
-            color: tomato;
+            color: Tomato;
             font-family: sans-serif;
             text-align: center;
             margin: 0;
-            padding: 0 10px;
+            padding: 0;
         }
 
-        /* Main image */
         .main-image {
-            width: 50%;
-            max-width: 250px;
+            width: 40%;
+            max-width: 150px;
             height: auto;
             margin: 20px auto;
             display: block;
         }
 
-        /* Section spacing */
         .section {
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
-        /* Section titles */
         .section-title {
-            text-align: center;
-            margin: 0 0 10px 0;
             font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
         }
 
-        /* Icon grids */
         .icon-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
         }
 
         .icon-grid a {
+            margin: 10px;
             display: block;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Hover effect */
-        .icon-grid a:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px tomato;
-            border-radius: 10px;
-        }
-
-        /* Large icons (first 11) */
-        .large-icon-grid img {
-            width: 150px;
+        .icon-grid img {
+            width: 80px;
             height: auto;
         }
 
-        /* Smaller icons (other sections) */
-        .small-icon-grid img {
+        /* Large icons for first 11 links */
+        .large-icon-grid img {
             width: 120px;
             height: auto;
         }
 
-        /* Links */
-        .links {
-            margin: 30px 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .links a {
-            color: tomato;
-            text-decoration: none;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        .links a:hover {
-            color: #fff;
-        }
-
-        /* Responsive adjustments */
         @media (max-width: 600px) {
-
-            /* First 11 icons: larger, left-aligned */
-            .large-icon-grid {
-                justify-content: flex-start; /* left align */
-            }
-
-            .large-icon-grid img {
-                width: 32vw;  /* bigger for easy thumb tap */
-                max-width: 140px;
-            }
-
-            /* Smaller icons: centered but smaller */
-            .small-icon-grid img {
-                width: 25vw;
-                max-width: 100px;
-            }
-
             .main-image {
                 width: 60%;
                 max-width: 200px;
@@ -113,74 +61,98 @@
             .section-title {
                 font-size: 1.2em;
             }
+
+            /* First 11 icons: left-aligned, 3 per row */
+            .large-icon-grid {
+                justify-content: flex-start;
+            }
+
+            .large-icon-grid a {
+                flex: 1 0 32%;
+                max-width: 32%;
+                margin-bottom: 10px;
+            }
+
+            .large-icon-grid img {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Smaller icons: centered */
+            .small-icon-grid img {
+                width: 25vw;
+                max-width: 100px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Main Image -->
-<img src="/gwy/water.png" alt="ab" class="main-image">
+    <!-- Main image -->
+    <img src="/gwy/water.png" alt="ab" class="main-image">
 
-<!-- First 11 Icons -->
-<div class="section large-icon-grid">
-    <a href="http://www.bom.gov.au/products/IDR663.loop.shtml"><img src="/gwy/bom.png" alt="BOM"></a>
-    <a href="http://www.bom.gov.au/qld/forecasts/brisbane.shtml"><img src="/gwy/bom2.png" alt="BOM Brisbane"></a>
-    <a href="https://www.abc.net.au/news/"><img src="/gwy/abc.png" alt="ABC News"></a>
-    <a href="https://news.com.au"><img src="/gwy/newscomau.png" alt="News.com.au"></a>
-    <a href="https://petrolspy.com.au"><img src="/gwy/petrol.png" alt="PetrolSpy"></a>
-    <a href="https://app.jarr.info/"><img src="/gwy/jarr.png" alt="Jarr"></a>
-    <a href="https://www.ozbargain.com.au/"><img src="/gwy/ozbargain.png" alt="OzBargain"></a>
-    <a href="https://next-episode.net/"><img src="/gwy/nextep.png" alt="Next Episode"></a>
-    <a href="https://lukerissacher.com/battleships"><img src="/gwy/bship.png" alt="Battleships"></a>
-    <a href="https://www.minutecryptic.com"><img src="/gwy/minc.png" alt="Minute Cryptic"></a>
-    <a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" alt="Explain That Stuff"></a>
-</div>
-
-<!-- Other Sections -->
-<div class="section">
-    <div class="section-title">BLUG</div>
-    <div class="icon-grid small-icon-grid">
-        <a href="https://www.yankodesign.com"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-        <a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a>
-        <a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="Pixel Joint"></a>
-        <a href="https://bookpecker.com"><img src="/gwy/bpeck.png" alt="BookPecker"></a>
+    <!-- First 11 links -->
+    <div class="section large-icon-grid icon-grid">
+        <a href="http://www.bom.gov.au/products/IDR663.loop.shtml"><img src="/gwy/bom.png" alt="BOM"></a>
+        <a href="http://www.bom.gov.au/qld/forecasts/brisbane.shtml"><img src="/gwy/bom2.png" alt="BOM QLD"></a>
+        <a href="https://www.abc.net.au/news/"><img src="/gwy/abc.png" alt="ABC"></a>
+        <a href="https://news.com.au"><img src="/gwy/newscomau.png" alt="News.com.au"></a>
+        <a href="https://petrolspy.com.au"><img src="/gwy/petrol.png" alt="PetrolSpy"></a>
+        <a href="https://app.jarr.info/"><img src="/gwy/jarr.png" alt="Jarr"></a>
+        <a href="https://www.ozbargain.com.au/"><img src="/gwy/ozbargain.png" alt="OzBargain"></a>
+        <a href="https://next-episode.net/"><img src="/gwy/nextep.png" alt="Next Episode"></a>
+        <a href="https://lukerissacher.com/battleships"><img src="/gwy/bship.png" alt="Battleships"></a>
+        <a href="https://www.minutecryptic.com"><img src="/gwy/minc.png" alt="Minute Cryptic"></a>
+        <a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" alt="Explain That Stuff"></a>
     </div>
-</div>
 
-<div class="section">
-    <div class="section-title">3D</div>
-    <div class="icon-grid small-icon-grid">
-        <a href="https://www.printables.com/"><img src="/gwy/printables.png" alt="Printables"></a>
-        <a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" alt="Cults3D"></a>
-        <a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" alt="Thangs"></a>
+    <!-- Design section -->
+    <div class="section">
+        <div class="section-title">BLUG</div>
+        <div class="small-icon-grid icon-grid">
+            <a href="https://www.yankodesign.com"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
+            <a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a>
+            <a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="PixelJoint"></a>
+            <a href="https://bookpecker.com"><img src="/gwy/bpeck.png" alt="BookPecker"></a>
+        </div>
     </div>
-</div>
 
-<div class="section">
-    <div class="section-title">etc</div>
-    <div class="icon-grid small-icon-grid">
-        <a href="https://www.iloveimg.com/"><img src="/gwy/loveimg.png" alt="ILoveImg"></a>
-        <a href="https://www.photopea.com/"><img src="/gwy/ppea.png" alt="Photopea"></a>
-        <a href="https://www.flaticon.com/"><img src="/gwy/flaticon.png" alt="Flaticon"></a>
-        <a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua"><img src="/gwy/noun.png" alt="Noun Project"></a>
-        <a href="https://www.phylopic.org/"><img src="/gwy/phylopic.png" alt="Phylopic"></a>
-        <a href="https://www.ilovepdf.com/"><img src="/gwy/lovepdf.png" alt="ILovePDF"></a>
-        <a href="https://www.printfriendly.com/"><img src="/gwy/pfriend.png" alt="PrintFriendly"></a>
-        <a href="https://rentry.co/megathread-all-purpose"><img src="/gwy/mega.png" alt="Rentry"></a>
-        <a href="https://snhy.github.io/tv.html"><img src="/gwy/stv.png" alt="STV"></a>
-        <a href="https://snhy.github.io/sndb.html"><img src="/gwy/sound.png" alt="Sound"></a>
+    <!-- 3D section -->
+    <div class="section">
+        <div class="section-title">3D</div>
+        <div class="small-icon-grid icon-grid">
+            <a href="https://www.printables.com/"><img src="/gwy/printables.png" alt="Printables"></a>
+            <a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" alt="Cults3D"></a>
+            <a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" alt="Thangs"></a>
+        </div>
     </div>
-</div>
 
-<!-- Simple text links -->
-<div class="links">
-    <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions">Misconceptions</a>
-    <a href="https://ask.metafilter.com/">Askmefi</a>
-    <a href="https://b3ta.com/">b3ta</a>
-    <a href="https://dailypuzz.com/index.html">dailypuzz</a>
-    <a href="https://www.wordplays.com/crossword-solver/crossword">xwordsolver</a>
-    <a href="https://sciencedaily.substack.com/">scidaily</a>
-</div>
+    <!-- Etc section -->
+    <div class="section">
+        <div class="section-title">etc</div>
+        <div class="small-icon-grid icon-grid">
+            <a href="https://www.iloveimg.com/"><img src="/gwy/loveimg.png" alt="ILoveImg"></a>
+            <a href="https://www.photopea.com/"><img src="/gwy/ppea.png" alt="Photopea"></a>
+            <a href="https://www.flaticon.com/"><img src="/gwy/flaticon.png" alt="Flaticon"></a>
+            <a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua"><img src="/gwy/noun.png" alt="Noun Project"></a>
+            <a href="https://www.phylopic.org/"><img src="/gwy/phylopic.png" alt="Phylopic"></a>
+            <a href="https://www.ilovepdf.com/"><img src="/gwy/lovepdf.png" alt="ILovePDF"></a>
+            <a href="https://www.printfriendly.com/"><img src="/gwy/pfriend.png" alt="PrintFriendly"></a>
+            <a href="https://rentry.co/megathread-all-purpose"><img src="/gwy/mega.png" alt="Rentry"></a>
+            <a href="https://snhy.github.io/tv.html"><img src="/gwy/stv.png" alt="STV"></a>
+            <a href="https://snhy.github.io/sndb.html"><img src="/gwy/sound.png" alt="Sound"></a>
+        </div>
+    </div>
+
+    <!-- Extra links -->
+    <div class="section">
+        <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions">Misconceptions</a> |
+        <a href="https://ask.metafilter.com/">Askmefi</a> |
+        <a href="https://b3ta.com/">b3ta</a> |
+        <a href="https://dailypuzz.com/index.html">dailypuzz</a> |
+        <a href="https://www.wordplays.com/crossword-solver/crossword">xwordsolver</a> |
+        <a href="https://sciencedaily.substack.com/">scidaily</a>
+    </div>
 
 </body>
 </html>
