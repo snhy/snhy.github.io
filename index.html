@@ -1,95 +1,132 @@
 <!DOCTYPE html>
-<html><head><title>gateway</title></head>
-<body style="background-color:#000000;">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gateway</title>
+    <style>
+        body {
+            background-color: #000;
+            color: tomato;
+            font-size: 1.5em;
+            text-align: center;
+            font-family: sans-serif;
+        }
+        .main-image {
+            margin: 40px auto;
+            width: 612px;
+            height: 612px;
+            display: block;
+        }
+        .icon-table {
+            margin: 20px auto;
+            border-collapse: separate;
+        }
+        .icon-table td {
+            padding: 15px;
+        }
+        .icon img {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            display: block;
+        }
+        .small-icon img {
+            width: 120px;
+            height: 120px;
+        }
+        .section-title {
+            text-align: left;
+            margin-left: 20px;
+            font-size: 1.5em;
+        }
+        .links a {
+            color: tomato;
+            display: inline-block;
+            margin: 5px 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
 
-<!-- 
-<td align="center"><a href="XXXX" class="nl"><img src="/gwy/XXXX.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
--->
+<img src="/gwy/water.png" alt="Gateway" class="main-image">
 
-<img src="/gwy/water.png" alt="ab" style="margin: 40px 40px;" width="612" height="612">
+<!-- First set of large icons -->
+<table class="icon-table">
+    <tr>
+        <td class="icon"><a href="http://www.bom.gov.au/products/IDR663.loop.shtml"><img src="/gwy/bom.png" alt="BOM"></a></td>
+        <td class="icon"><a href="http://www.bom.gov.au/qld/forecasts/brisbane.shtml"><img src="/gwy/bom2.png" alt="BOM Brisbane"></a></td>
+    </tr>
+    <tr>
+        <td class="icon"><a href="https://www.abc.net.au/news/"><img src="/gwy/abc.png" alt="ABC News"></a></td>
+        <td class="icon"><a href="https://news.com.au"><img src="/gwy/newscomau.png" alt="News.com.au"></a></td>
+        <td class="icon"><a href="https://petrolspy.com.au"><img src="/gwy/petrol.png" alt="Petrol Spy"></a></td>
+    </tr>
+    <tr>
+        <td class="icon"><a href="https://app.jarr.info/"><img src="/gwy/jarr.png" alt="Jarr"></a></td>
+        <td class="icon"><a href="https://www.ozbargain.com.au/"><img src="/gwy/ozbargain.png" alt="OzBargain"></a></td>
+        <td class="icon"><a href="https://next-episode.net/"><img src="/gwy/nextep.png" alt="Next Episode"></a></td>
+    </tr>
+    <tr>
+        <td class="icon"><a href="https://lukerissacher.com/battleships"><img src="/gwy/bship.png" alt="Battleships"></a></td>
+        <td class="icon"><a href="https://www.minutecryptic.com"><img src="/gwy/minc.png" alt="Minute Cryptic"></a></td>
+        <td class="icon"><a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" alt="Explain That Stuff"></a></td>
+    </tr>
+</table>
 
-<table> <table style="margin-left:15;margin-right:auto;color:Tomato;font-size:150%;style="text-decoration:none"> <tbody>
-   
-   <tr>
-<td align="center"><a href="http://www.bom.gov.au/products/IDR663.loop.shtml"><img src="/gwy/bom.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="http://www.bom.gov.au/qld/forecasts/brisbane.shtml"><img src="/gwy/bom2.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-   </tr><tr> 
-   </tr><tr>
-<td align="center"><a href="https://www.abc.net.au/news/" class="nl"><img src="/gwy/abc.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://news.com.au" class="nl"><img src="/gwy/newscomau.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://petrolspy.com.au" class="nl"><img src="/gwy/petrol.png" style="margin: 15px 15px;" width="180" height="180"></a></td> 
-   </tr><tr> 
-   </tr><tr>
-<td align="center"><a href="https://app.jarr.info/" class="nl"><img src="/gwy/jarr.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://www.ozbargain.com.au/" class="nl"><img src="/gwy/ozbargain.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://next-episode.net/"><img src="/gwy/nextep.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-   </tr><tr> 
-   </tr><tr>
-<td align="center"><a href="https://lukerissacher.com/battleships" class="nl"><img src="/gwy/bship.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://www.minutecryptic.com"><img src="/gwy/minc.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-<td align="center"><a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" style="margin: 15px 15px;" width="180" height="180"></a></td>
-   </tr><tr>  
-   </tr>  
-<tr><td><a height="180">&nbsp;</a></td></tr>
-</tbody></table>
+<!-- Smaller sections -->
+<div class="section">
+    <div class="section-title">BLUG</div>
+    <table class="icon-table">
+        <tr>
+            <td class="icon small-icon"><a href="https://www.yankodesign.com"><img src="/gwy/yanko.jpg" alt="Yanko"></a></td>
+            <td class="icon small-icon"><a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a></td>
+            <td class="icon small-icon"><a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="Pixel Joint"></a></td>
+            <td class="icon small-icon"><a href="https://bookpecker.com"><img src="/gwy/bpeck.png" alt="BookPecker"></a></td>
+        </tr>
+    </table>
+</div>
 
-<table> <table style="margin-left:15;margin-right:auto;color:Tomato;font-size:150%;style="text-decoration:none"> <tbody>
+<div class="section">
+    <div class="section-title">3D</div>
+    <table class="icon-table">
+        <tr>
+            <td class="icon small-icon"><a href="https://www.printables.com/"><img src="/gwy/printables.png" alt="Printables"></a></td>
+            <td class="icon small-icon"><a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" alt="Cults3D"></a></td>
+            <td class="icon small-icon"><a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" alt="Thangs"></a></td>
+        </tr>
+    </table>
+</div>
 
-   
-<tr>
-   <br><br><br><br><br>
-   <td align="left" style="font-size:150%">&nbsp;&nbsp;&nbsp;
-   <a>BLUG</a><br></td></tr>
-   <tr>
-<td align="center"><a href="https://www.yankodesign.com" class="nl"><img src="/gwy/yanko.jpg" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://designyoutrust.com/" class="nl"><img src="/gwy/design.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://bookpecker.com"><img src="/gwy/bpeck.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-   </tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
+<div class="section">
+    <div class="section-title">etc</div>
+    <table class="icon-table">
+        <tr>
+            <td class="icon small-icon"><a href="https://www.iloveimg.com/"><img src="/gwy/loveimg.png" alt="ILoveImg"></a></td>
+            <td class="icon small-icon"><a href="https://www.photopea.com/"><img src="/gwy/ppea.png" alt="Photopea"></a></td>
+            <td class="icon small-icon"><a href="https://www.flaticon.com/"><img src="/gwy/flaticon.png" alt="Flaticon"></a></td>
+            <td class="icon small-icon"><a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua"><img src="/gwy/noun.png" alt="Noun Project"></a></td>
+            <td class="icon small-icon"><a href="https://www.phylopic.org/"><img src="/gwy/phylopic.png" alt="Phylopic"></a></td>
+        </tr>
+        <tr>
+            <td class="icon small-icon"><a href="https://www.ilovepdf.com/"><img src="/gwy/lovepdf.png" alt="ILovePDF"></a></td>
+            <td class="icon small-icon"><a href="https://www.printfriendly.com/"><img src="/gwy/pfriend.png" alt="Print Friendly"></a></td>
+            <td class="icon small-icon"><a href="https://rentry.co/megathread-all-purpose"><img src="/gwy/mega.png" alt="Rentry Mega"></a></td>
+            <td class="icon small-icon"><a href="https://snhy.github.io/tv.html"><img src="/gwy/stv.png" alt="STV"></a></td>
+            <td class="icon small-icon"><a href="https://snhy.github.io/sndb.html"><img src="/gwy/sound.png" alt="Sound DB"></a></td>
+        </tr>
+    </table>
+</div>
 
-   
-<tr><td align="left" style="font-size:150%">&nbsp;&nbsp;&nbsp;
-   <a>3D</a><br></td></tr>
-   <tr>
-<td align="center"><a href="https://www.printables.com/"><img src="/gwy/printables.png" style="margin: 10px 10px;" width="120" height="120"></a></td> 
-<td align="center"><a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" style="margin: 10px 10px;" width="120" height="120"></a></td> 
-   </tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
+<!-- Text links -->
+<div class="links">
+    <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions">Misconceptions</a>
+    <a href="https://ask.metafilter.com/">AskMeFi</a>
+    <a href="https://b3ta.com/">b3ta</a>
+    <a href="https://dailypuzz.com/index.html">Daily Puzz</a>
+    <a href="https://www.wordplays.com/crossword-solver/crossword">Xword Solver</a>
+    <a href="https://sciencedaily.substack.com/">SciDaily</a>
+</div>
 
-   
-<tr><td align="left" style="font-size:150%">&nbsp;&nbsp;&nbsp;
-   <a>etc</a><br></td></tr>
-   <tr>
-<td align="center"><a href="https://www.iloveimg.com/" class="nl"><img src="/gwy/loveimg.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://www.photopea.com/" class="nl"><img src="/gwy/ppea.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://www.flaticon.com/" class="nl"><img src="/gwy/flaticon.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua"><img src="/gwy/noun.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://www.phylopic.org/"><img src="/gwy/phylopic.png" style="margin: 10px 10px;" width="120" height="120"></a></td> 
-   </tr><tr>
-<td align="center"><a href="https://www.ilovepdf.com/" class="nl"><img src="/gwy/lovepdf.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://www.printfriendly.com/"><img src="/gwy/pfriend.png" style="margin: 10px 10px;" width="120" height="120"></a></td> 
-<td align="center"><a href="https://rentry.co/megathread-all-purpose" class="nl"><img src="/gwy/mega.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://snhy.github.io/tv.html"><img src="/gwy/stv.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-<td align="center"><a href="https://snhy.github.io/sndb.html"><img src="/gwy/sound.png" style="margin: 10px 10px;" width="120" height="120"></a></td>
-   </tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
-<tr><td><a height="120">&nbsp;</a></td></tr>
-
-
-<a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions">Misconceptions</a>
-<a href="https://ask.metafilter.com/">Askmefi</a>
-<a href="https://b3ta.com/">b3ta</a>
-<a href="https://dailypuzz.com/index.html">dailypuzz</a>
-<a href="https://www.wordplays.com/crossword-solver/crossword">xwordsolver</a>
-<a href="https://sciencedaily.substack.com/">scidaily</a>
-
-   
-<br> <br> <br>
-
-</tbody></table>
-
+</body>
 </html>
