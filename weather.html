@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brisbane — 7-day Summary</title>
+  <title>Brisbane — 7-day Summary + Radar</title>
   <style>
     :root{
       --bg:#f7fafc; --card:#ffffff; --muted:#6b7280; --accent:#0f62fe;
@@ -30,6 +30,8 @@
     .day .info{color:var(--muted);font-size:0.92rem}
     footer{margin-top:12px;color:var(--muted);font-size:0.85rem}
     .attribution{font-size:0.78rem;color:#9aa0a6;margin-top:8px}
+    .radar{margin-top:18px}
+    .radar iframe{width:100%;height:600px;border:0;border-radius:var(--radius);box-shadow:0 6px 20px rgba(12,18,28,0.06)}
   </style>
 </head>
 <body>
@@ -37,7 +39,7 @@
     <header>
       <div>
         <div class="title">Brisbane — 7-day forecast (condensed)</div>
-        <div class="meta" id="issued">Forecast issued: <strong>4:50 am EST, Wed 10 Sep 2025</strong></div>
+        <div class="meta">Forecast issued: <strong>4:50 am EST, Wed 10 Sep 2025</strong></div>
       </div>
     </header>
 
@@ -62,55 +64,11 @@
       <aside class="card">
         <div style="font-weight:700;margin-bottom:8px">7-Day overview</div>
         <div class="week">
-          <div class="day">
-            <div class="label">Thu 11 Sep</div>
-            <div class="info">Min 15°C — Max 24°C — Sunny — Chance of rain: 10%</div>
-          </div>
-
-          <div class="day">
-            <div class="label">Fri 12 Sep</div>
-            <div class="info">Min 11°C — Max 24°C — Partly cloudy — Chance of rain: 10%</div>
-          </div>
-
-          <div class="day">
-            <div class="label">Sat 13 Sep</div>
-            <div class="info">Min 12°C — Max 23°C — Possible shower — Chance of rain: 40%</div>
-          </div>
-
-          <div class="day">
-            <div class="label">Sun 14 Sep</div>
-            <div class="info">Min 13°C — Max 24°C — Partly cloudy — Chance of rain: 20%</div>
-          </div>
-
-          <div class="day">
-            <div class="label">Mon 15 Sep</div>
-            <div class="info">Min 13°C — Max 25°C — Mostly sunny — Chance of rain: 10%</div>
-          </div>
-
-          <div class="day">
-            <div class="label">Tue 16 Sep</div>
-            <div class="info">Min 13°C — Max 26°C — Sunny — Chance of rain: 10%</div>
-          </div>
+          <div class="day"><div class="label">Thu 11 Sep</div><div class="info">Min 15°C — Max 24°C — Sunny — 10%</div></div>
+          <div class="day"><div class="label">Fri 12 Sep</div><div class="info">Min 11°C — Max 24°C — Partly cloudy — 10%</div></div>
+          <div class="day"><div class="label">Sat 13 Sep</div><div class="info">Min 12°C — Max 23°C — Possible shower — 40%</div></div>
+          <div class="day"><div class="label">Sun 14 Sep</div><div class="info">Min 13°C — Max 24°C — Partly cloudy — 20%</div></div>
+          <div class="day"><div class="label">Mon 15 Sep</div><div class="info">Min 13°C — Max 25°C — Mostly sunny — 10%</div></div>
+          <div class="day"><div class="label">Tue 16 Sep</div><div class="info">Min 13°C — Max 26°C — Sunny — 10%</div></div>
         </div>
-
         <div style="margin-top:10px;color:var(--muted);font-size:0.88rem">
-          Next routine forecast scheduled: <strong>4:20 pm EST, Wed 10 Sep 2025</strong>
-        </div>
-      </aside>
-    </section>
-
-    <footer>
-      <div>Notes:</div>
-      <ul style="color:var(--muted);margin-top:6px">
-        <li>Temperatures and rain chances are taken from the Bureau of Meteorology's Brisbane area forecast and summarized here for simple display.</li>
-        <li>This file does not include BOM graphics (radar, icons). For the official warnings, radar and full text see the Bureau of Meteorology.</li>
-      </ul>
-
-      <div class="attribution">
-        Source: Bureau of Meteorology — Brisbane forecast (data issued 4:50 am EST, Wed 10 Sep 2025). :contentReference[oaicite:1]{index=1}
-      </div>
-    </footer>
-  </main>
-</body>
-</html>
-
