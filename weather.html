@@ -33,13 +33,18 @@
     .radar{margin-top:18px}
     
     /* Radar responsive styles */
-    .radar-container {position: relative; overflow: hidden; width: 100%;}
+    .radar-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(12,18,28,0.06);
+      background: #000;
+    }
     .radar-container iframe {
       width: 100%; 
       height: 500px; 
-      border: 0; 
-      border-radius: var(--radius);
-      box-shadow: 0 6px 20px rgba(12,18,28,0.06);
+      border: 0;
     }
     @media (max-width: 768px) {
       .radar-container iframe {
@@ -50,31 +55,20 @@
       .radar-container iframe {
         height: 280px;
       }
-      .radar-options {
-        flex-direction: column;
-        gap: 8px;
-      }
     }
     
-    /* New styles for radar controls */
+    /* Simple radar controls */
     .radar-controls {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .radar-options {
-      display: flex;
+      justify-content: center;
       gap: 12px;
-      align-items: center;
+      margin-top: 12px;
     }
     .radar-btn {
       background: var(--accent);
       color: white;
       border: none;
-      padding: 8px 14px;
+      padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
       font-size: 0.9rem;
@@ -84,11 +78,6 @@
     }
     .radar-btn:hover {
       opacity: 0.9;
-    }
-    .radar-btn.outline {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
     }
     
     /* Loading animation */
@@ -138,17 +127,15 @@
     <!-- Radar section -->
     <section class="radar">
       <div class="card">
-        <div class="radar-controls">
-          <div style="font-weight:700;">Live Brisbane Radar</div>
-          <div class="radar-options">
-            <button class="radar-btn outline" id="radar-zoom-out">−</button>
-            <button class="radar-btn outline" id="radar-zoom-in">+</button>
-            <button class="radar-btn" id="radar-fullscreen">Full Screen</button>
-          </div>
-        </div>
+        <div style="font-weight:700;margin-bottom:8px">Live Brisbane Radar</div>
         
         <div class="radar-container">
           <iframe id="radar-iframe" src="https://www.bom.gov.au/products/IDR663.loop.shtml#skip" loading="lazy"></iframe>
+        </div>
+        
+        <div class="radar-controls">
+          <button class="radar-btn" id="radar-zoom-out">Zoom Out</button>
+          <button class="radar-btn" id="radar-zoom-in">Zoom In</button>
         </div>
         
         <div class="attribution">Source: Bureau of Meteorology — Brisbane radar (IDR663)</div>
@@ -178,7 +165,6 @@
     const radarIframe = document.getElementById('radar-iframe');
     const zoomInBtn = document.getElementById('radar-zoom-in');
     const zoomOutBtn = document.getElementById('radar-zoom-out');
-    const fullscreenBtn = document.getElementById('radar-fullscreen');
     
     // Radar zoom state
     let radarZoomLevel = 1;
@@ -186,15 +172,6 @@
     // Format date function
     function formatDate(timestamp, options = { weekday: 'short', day: 'numeric', month: 'short' }) {
       return new Date(timestamp).toLocaleDateString('en-AU', options);
-    }
-    
-    // Format time function
-    function formatTime(timestamp) {
-      return new Date(timestamp).toLocaleTimeString('en-AU', { 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: false 
-      });
     }
     
     // Get weather icon URL
@@ -372,7 +349,6 @@
       updateTimeElement.textContent = now.toLocaleTimeString('en-AU', {
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
         hour12: false
       });
     }
@@ -392,17 +368,6 @@
         if (radarZoomLevel > 0.6) {
           radarZoomLevel -= 0.1;
           radarIframe.style.transform = `scale(${radarZoomLevel})`;
-        }
-      });
-      
-      // Full screen button
-      fullscreenBtn.addEventListener('click', () => {
-        if (radarIframe.requestFullscreen) {
-          radarIframe.requestFullscreen();
-        } else if (radarIframe.webkitRequestFullscreen) {
-          radarIframe.webkitRequestFullscreen();
-        } else if (radarIframe.msRequestFullscreen) {
-          radarIframe.msRequestFullscreen();
         }
       });
     }
