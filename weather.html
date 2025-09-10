@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Brisbane — 7-day Summary + Radar</title>
+  <title>Brisbane — Live Weather + Radar</title>
   <style>
     :root{
       --bg:#f7fafc; --card:#ffffff; --muted:#6b7280; --accent:#0f62fe;
@@ -32,47 +32,45 @@
     .attribution{font-size:0.78rem;color:#9aa0a6;margin-top:8px}
     .radar{margin-top:18px}
     .radar iframe{width:100%;height:600px;border:0;border-radius:var(--radius);box-shadow:0 6px 20px rgba(12,18,28,0.06)}
+    
+    /* New styles */
+    .loading{display:flex;justify-content:center;align-items:center;height:200px}
+    .spinner{border:4px solid rgba(0,0,0,0.1);width:36px;height:36px;border-radius:50%;border-left-color:var(--accent);animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .current-temp{font-size:2.5rem;font-weight:700;margin:10px 0}
+    .weather-icon{width:64px;height:64px}
+    .current-weather{display:flex;align-items:center;gap:12px}
+    .error{color:#e53e3e;background:#fed7d7;padding:12px;border-radius:var(--radius);margin:10px 0}
+    .last-updated{font-size:0.8rem;color:var(--muted);margin-top:8px}
+    .refresh-btn{background:var(--accent);color:white;border:none;padding:8px 16px;border-radius:var(--radius);cursor:pointer;margin-top:10px}
+    .refresh-btn:hover{opacity:0.9}
   </style>
 </head>
 <body>
   <main class="wrap">
     <header>
       <div>
-        <div class="title">Brisbane — 7-day forecast (condensed)</div>
-        <div class="meta">Forecast issued: <strong>4:50 am EST, Wed 10 Sep 2025</strong></div>
+        <div class="title">Brisbane — Live Weather & Forecast</div>
+        <div class="meta">Last updated: <strong id="update-time">Loading...</strong></div>
       </div>
     </header>
 
     <section class="grid">
       <!-- Today's summary -->
       <article class="card today">
-        <div class="big">Today — Brisbane area</div>
-        <div class="sub">Partly cloudy. Possible late shower. Max around <strong>29°C</strong>.</div>
-
-        <div class="details">
-          <div class="pill">Chance of any rain: 40%</div>
-          <div class="wind">Winds: north to northwesterly 15–20 km/h, increasing to 25 km/h</div>
-          <div class="uv">UV Index (pred): 7 — High</div>
+        <div class="big">Current Weather — Brisbane</div>
+        <div id="current-weather-container" class="loading">
+          <div class="spinner"></div>
         </div>
-
-        <div class="attribution">
-          Paraphrased from the Bureau of Meteorology's Brisbane forecast.
-        </div>
+        <div class="last-updated">Data refreshes automatically every 15 minutes</div>
+        <button class="refresh-btn" id="refresh-btn">Refresh Data</button>
       </article>
 
       <!-- 7 day compact view -->
       <aside class="card">
-        <div style="font-weight:700;margin-bottom:8px">7-Day overview</div>
-        <div class="week">
-          <div class="day"><div class="label">Thu 11 Sep</div><div class="info">Min 15°C — Max 24°C — Sunny — 10%</div></div>
-          <div class="day"><div class="label">Fri 12 Sep</div><div class="info">Min 11°C — Max 24°C — Partly cloudy — 10%</div></div>
-          <div class="day"><div class="label">Sat 13 Sep</div><div class="info">Min 12°C — Max 23°C — Possible shower — 40%</div></div>
-          <div class="day"><div class="label">Sun 14 Sep</div><div class="info">Min 13°C — Max 24°C — Partly cloudy — 20%</div></div>
-          <div class="day"><div class="label">Mon 15 Sep</div><div class="info">Min 13°C — Max 25°C — Mostly sunny — 10%</div></div>
-          <div class="day"><div class="label">Tue 16 Sep</div><div class="info">Min 13°C — Max 26°C — Sunny — 10%</div></div>
-        </div>
-        <div style="margin-top:10px;color:var(--muted);font-size:0.88rem">
-          Next routine forecast scheduled: <strong>4:20 pm EST, Wed 10 Sep 2025</strong>
+        <div style="font-weight:700;margin-bottom:8px">7-Day Forecast</div>
+        <div id="forecast-container" class="loading">
+          <div class="spinner"></div>
         </div>
       </aside>
     </section>
@@ -89,10 +87,259 @@
     <footer>
       <div>Notes:</div>
       <ul style="color:var(--muted);margin-top:6px">
-        <li>Temperatures and rain chances are taken from the Bureau of Meteorology's Brisbane area forecast and summarized here for simple display.</li>
-        <li>Radar and forecast data are provided by the Bureau of Meteorology. Always check the official BOM site for warnings and the most accurate updates.</li>
+        <li>Weather data is sourced from OpenWeatherMap. Radar data is provided by the Bureau of Meteorology.</li>
+        <li>Always check the official BOM site for warnings and the most accurate updates.</li>
       </ul>
     </footer>
   </main>
+
+  <script>
+    // Configuration
+    const API_KEY = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your API key
+    const CITY = 'Brisbane,AU';
+    const UPDATE_INTERVAL = 15 * 60 * 1000; // 15 minutes in milliseconds
+    
+    // DOM elements
+    const currentWeatherContainer = document.getElementById('current-weather-container');
+    const forecastContainer = document.getElementById('forecast-container');
+    const updateTimeElement = document.getElementById('update-time');
+    const refreshButton = document.getElementById('refresh-btn');
+    
+    // Format date function
+    function formatDate(timestamp, options = { weekday: 'short', day: 'numeric', month: 'short' }) {
+      return new Date(timestamp).toLocaleDateString('en-AU', options);
+    }
+    
+    // Format time function
+    function formatTime(timestamp) {
+      return new Date(timestamp).toLocaleTimeString('en-AU', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: false 
+      });
+    }
+    
+    // Get weather icon URL
+    function getWeatherIconUrl(iconCode) {
+      return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    }
+    
+    // Fetch current weather
+    async function fetchCurrentWeather() {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&appid=${API_KEY}`
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch current weather data');
+        }
+        
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching current weather:', error);
+        throw error;
+      }
+    }
+    
+    // Fetch forecast
+    async function fetchForecast() {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&units=metric&appid=${API_KEY}`
+        );
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch forecast data');
+        }
+        
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching forecast:', error);
+        throw error;
+      }
+    }
+    
+    // Process forecast data to get daily forecasts
+    function processForecastData(forecastData) {
+      // Group forecasts by day
+      const dailyForecasts = {};
+      
+      forecastData.list.forEach(forecast => {
+        const date = new Date(forecast.dt * 1000).toDateString();
+        
+        if (!dailyForecasts[date]) {
+          dailyForecasts[date] = [];
+        }
+        
+        dailyForecasts[date].push(forecast);
+      });
+      
+      // Get today and the next 6 days
+      const today = new Date();
+      const nextDays = [];
+      
+      for (let i = 1; i <= 7; i++) {
+        const nextDay = new Date(today);
+        nextDay.setDate(today.getDate() + i);
+        nextDays.push(nextDay.toDateString());
+      }
+      
+      // Create daily summary for the next 7 days
+      const dailySummary = nextDays.map(dateString => {
+        const forecasts = dailyForecasts[dateString];
+        
+        if (!forecasts || forecasts.length === 0) {
+          return null;
+        }
+        
+        // Calculate min and max temperatures
+        const temps = forecasts.map(f => f.main.temp);
+        const minTemp = Math.round(Math.min(...temps));
+        const maxTemp = Math.round(Math.max(...temps));
+        
+        // Get the most common weather condition
+        const weatherConditions = {};
+        forecasts.forEach(f => {
+          const condition = f.weather[0].main;
+          weatherConditions[condition] = (weatherConditions[condition] || 0) + 1;
+        });
+        
+        const dominantCondition = Object.keys(weatherConditions).reduce((a, b) => 
+          weatherConditions[a] > weatherConditions[b] ? a : b
+        );
+        
+        // Format condition for display
+        const conditionMap = {
+          'Clear': 'Sunny',
+          'Clouds': 'Cloudy',
+          'Rain': 'Rainy',
+          'Drizzle': 'Showers',
+          'Thunderstorm': 'Storms',
+          'Snow': 'Snow',
+          'Mist': 'Misty',
+          'Smoke': 'Smoky',
+          'Haze': 'Hazy',
+          'Dust': 'Dusty',
+          'Fog': 'Foggy',
+          'Sand': 'Sandy',
+          'Ash': 'Ashy',
+          'Squall': 'Windy',
+          'Tornado': 'Tornado'
+        };
+        
+        const conditionDisplay = conditionMap[dominantCondition] || dominantCondition;
+        
+        // Calculate chance of rain (pop is probability of precipitation)
+        const pop = Math.round(Math.max(...forecasts.map(f => f.pop)) * 100);
+        
+        return {
+          date: new Date(dateString),
+          minTemp,
+          maxTemp,
+          condition: conditionDisplay,
+          pop
+        };
+      }).filter(day => day !== null);
+      
+      return dailySummary;
+    }
+    
+    // Update current weather UI
+    function updateCurrentWeatherUI(data) {
+      const currentTemp = Math.round(data.main.temp);
+      const feelsLike = Math.round(data.main.feels_like);
+      const humidity = data.main.humidity;
+      const windSpeed = Math.round(data.wind.speed * 3.6); // Convert m/s to km/h
+      const description = data.weather[0].description;
+      const iconCode = data.weather[0].icon;
+      
+      currentWeatherContainer.innerHTML = `
+        <div class="current-weather">
+          <img class="weather-icon" src="${getWeatherIconUrl(iconCode)}" alt="${description}">
+          <div class="current-temp">${currentTemp}°C</div>
+        </div>
+        <div class="sub">Feels like ${feelsLike}°C. ${description.charAt(0).toUpperCase() + description.slice(1)}.</div>
+        <div class="details">
+          <div class="pill">Humidity: ${humidity}%</div>
+          <div class="wind">Wind: ${windSpeed} km/h</div>
+        </div>
+      `;
+    }
+    
+    // Update forecast UI
+    function updateForecastUI(forecastData) {
+      const forecastHTML = forecastData.map(day => `
+        <div class="day">
+          <div class="label">${formatDate(day.date)}</div>
+          <div class="info">Min ${day.minTemp}°C — Max ${day.maxTemp}°C — ${day.condition} — ${day.pop}%</div>
+        </div>
+      `).join('');
+      
+      forecastContainer.innerHTML = `
+        <div class="week">
+          ${forecastHTML}
+        </div>
+      `;
+    }
+    
+    // Show error message
+    function showError(message, container) {
+      container.innerHTML = `<div class="error">${message}</div>`;
+    }
+    
+    // Update the time display
+    function updateTimeDisplay() {
+      const now = new Date();
+      updateTimeElement.textContent = now.toLocaleTimeString('en-AU', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+    }
+    
+    // Fetch and update all weather data
+    async function updateWeatherData() {
+      try {
+        // Show loading states
+        currentWeatherContainer.innerHTML = '<div class="spinner"></div>';
+        forecastContainer.innerHTML = '<div class="spinner"></div>';
+        
+        // Fetch data
+        const [currentWeather, forecast] = await Promise.all([
+          fetchCurrentWeather(),
+          fetchForecast()
+        ]);
+        
+        // Process and update UI
+        const processedForecast = processForecastData(forecast);
+        updateCurrentWeatherUI(currentWeather);
+        updateForecastUI(processedForecast);
+        
+        // Update time
+        updateTimeDisplay();
+      } catch (error) {
+        console.error('Error updating weather data:', error);
+        showError('Failed to load weather data. Please try again later.', currentWeatherContainer);
+        showError('Failed to load forecast data. Please try again later.', forecastContainer);
+      }
+    }
+    
+    // Initialize the app
+    async function init() {
+      // Load data initially
+      await updateWeatherData();
+      
+      // Set up auto-refresh
+      setInterval(updateWeatherData, UPDATE_INTERVAL);
+      
+      // Set up manual refresh button
+      refreshButton.addEventListener('click', updateWeatherData);
+    }
+    
+    // Start the app
+    init();
+  </script>
 </body>
 </html>
