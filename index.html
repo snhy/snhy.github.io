@@ -47,7 +47,7 @@
             height: auto;
         }
 
-        /* Large icons for first 11 links */
+        /* Large icons for first 11 links (desktop/tablet) */
         .large-icon-grid img {
             width: 120px;
             height: auto;
@@ -63,31 +63,22 @@
                 font-size: 1.2em;
             }
 
-            /* First 11 icons: left-aligned, 3 per row */
-            .large-icon-grid {
+            /* All icon grids: 3 per row on mobile */
+            .icon-grid {
                 justify-content: flex-start;
             }
 
-            .large-icon-grid a {
+            .icon-grid a {
                 flex: 0 0 33.33%;   /* exactly 3 per row */
                 max-width: 33.33%;
-                padding: 5px;       /* spacing without breaking layout */
+                padding: 5px;
                 box-sizing: border-box;
+                margin: 0; /* remove old margin so layout stays tight */
             }
 
-            .large-icon-grid img {
+            .icon-grid img {
                 width: 100%;
                 height: auto;
-            }
-
-            /* Smaller icons: centered */
-            .small-icon-grid {
-                justify-content: center;
-            }
-
-            .small-icon-grid img {
-                width: 25vw;
-                max-width: 100px;
             }
         }
     </style>
