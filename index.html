@@ -68,9 +68,10 @@
             }
 
             .large-icon-grid a {
-                flex: 1 0 32%;
-                max-width: 32%;
-                margin-bottom: 10px;
+                flex: 0 0 33.33%;   /* exactly 3 per row */
+                max-width: 33.33%;
+                padding: 5px;       /* spacing without breaking layout */
+                box-sizing: border-box;
             }
 
             .large-icon-grid img {
@@ -79,6 +80,10 @@
             }
 
             /* Smaller icons: centered */
+            .small-icon-grid {
+                justify-content: center;
+            }
+
             .small-icon-grid img {
                 width: 25vw;
                 max-width: 100px;
