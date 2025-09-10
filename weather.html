@@ -1,1 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brisbane — 7-day Summary</title>
+  <style>
+    :root{
+      --bg:#f7fafc; --card:#ffffff; --muted:#6b7280; --accent:#0f62fe;
+      --radius:12px; font-family: system-ui,-apple-system,Segoe UI,Roboto, "Helvetica Neue", Arial;
+    }
+    body{margin:0;background:var(--bg);color:#0b1220;line-height:1.3}
+    .wrap{max-width:920px;margin:20px auto;padding:18px}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    header .title{font-size:1.25rem;font-weight:700}
+    header .meta{color:var(--muted);font-size:0.9rem}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:720px){.grid{grid-template-columns:1fr 2fr}}
+    .card{background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:0 6px 20px rgba(12,18,28,0.06)}
+    .today{display:flex;flex-direction:column;gap:6px}
+    .today .big{font-size:2rem;font-weight:700}
+    .today .sub{color:var(--muted)}
+    .details{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .pill{background:#eef2ff;border-radius:10px;padding:6px 10px;font-weight:600;color:var(--accent);font-size:0.95rem}
+    .wind, .uv{color:var(--muted);font-size:0.95rem}
+    .week{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media(min-width:520px){.week{grid-template-columns:repeat(3,1fr)}}
+    .day{background:#fff;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+    .day .label{font-weight:700}
+    .day .info{color:var(--muted);font-size:0.92rem}
+    footer{margin-top:12px;color:var(--muted);font-size:0.85rem}
+    .attribution{font-size:0.78rem;color:#9aa0a6;margin-top:8px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <div class="title">Brisbane — 7-day forecast (condensed)</div>
+        <div class="meta" id="issued">Forecast issued: <strong>4:50 am EST, Wed 10 Sep 2025</strong></div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Today's summary -->
+      <article class="card today">
+        <div class="big">Today — Brisbane area</div>
+        <div class="sub">Partly cloudy. Possible late shower. Max around <strong>29°C</strong>.</div>
+
+        <div class="details">
+          <div class="pill">Chance of any rain: 40%</div>
+          <div class="wind">Winds: north to northwesterly 15–20 km/h, increasing to 25 km/h</div>
+          <div class="uv">UV Index (pred): 7 — High</div>
+        </div>
+
+        <div class="attribution">
+          Paraphrased from the Bureau of Meteorology's Brisbane forecast.
+        </div>
+      </article>
+
+      <!-- 7 day compact view -->
+      <aside class="card">
+        <div style="font-weight:700;margin-bottom:8px">7-Day overview</div>
+        <div class="week">
+          <div class="day">
+            <div class="label">Thu 11 Sep</div>
+            <div class="info">Min 15°C — Max 24°C — Sunny — Chance of rain: 10%</div>
+          </div>
+
+          <div class="day">
+            <div class="label">Fri 12 Sep</div>
+            <div class="info">Min 11°C — Max 24°C — Partly cloudy — Chance of rain: 10%</div>
+          </div>
+
+          <div class="day">
+            <div class="label">Sat 13 Sep</div>
+            <div class="info">Min 12°C — Max 23°C — Possible shower — Chance of rain: 40%</div>
+          </div>
+
+          <div class="day">
+            <div class="label">Sun 14 Sep</div>
+            <div class="info">Min 13°C — Max 24°C — Partly cloudy — Chance of rain: 20%</div>
+          </div>
+
+          <div class="day">
+            <div class="label">Mon 15 Sep</div>
+            <div class="info">Min 13°C — Max 25°C — Mostly sunny — Chance of rain: 10%</div>
+          </div>
+
+          <div class="day">
+            <div class="label">Tue 16 Sep</div>
+            <div class="info">Min 13°C — Max 26°C — Sunny — Chance of rain: 10%</div>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;color:var(--muted);font-size:0.88rem">
+          Next routine forecast scheduled: <strong>4:20 pm EST, Wed 10 Sep 2025</strong>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div>Notes:</div>
+      <ul style="color:var(--muted);margin-top:6px">
+        <li>Temperatures and rain chances are taken from the Bureau of Meteorology's Brisbane area forecast and summarized here for simple display.</li>
+        <li>This file does not include BOM graphics (radar, icons). For the official warnings, radar and full text see the Bureau of Meteorology.</li>
+      </ul>
+
+      <div class="attribution">
+        Source: Bureau of Meteorology — Brisbane forecast (data issued 4:50 am EST, Wed 10 Sep 2025). :contentReference[oaicite:1]{index=1}
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
 
