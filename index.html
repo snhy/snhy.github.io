@@ -17,8 +17,15 @@
             width: 40%;
             max-width: 150px;
             height: auto;
-            margin: 20px auto;
+            margin: 20px auto 5px auto;
             display: block;
+        }
+
+        .caption {
+            font-size: 14px;       /* smaller text */
+            text-align: center;    /* center below image */
+            margin-bottom: 5px;    /* small gap */
+            white-space: nowrap;   /* keep text on one line */
         }
 
         .section {
@@ -82,49 +89,16 @@
             }
         }
     </style>
-
-    <h2>Teddy Bday! 23rd April 2025</h2>
-<div id="weeks"></div>
-<div id="yearsMonthsDays"></div>
-
-    <script>
-  function updateTime() {
-    const startDate = new Date(2025, 2, 23); // 23 March 2025
-    const now = new Date();
-
-    // Weeks difference
-    const diffMs = now - startDate;
-    const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
-
-    // Years, months, days difference
-    let years = now.getFullYear() - startDate.getFullYear();
-    let months = now.getMonth() - startDate.getMonth();
-    let days = now.getDate() - startDate.getDate();
-
-    if (days < 0) {
-      months--;
-      const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-      days += prevMonth.getDate();
-    }
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-
-    document.getElementById("weeks").textContent = `Weeks: ${weeks}`;
-    document.getElementById("yearsMonthsDays").textContent = 
-      `Years/Months/Days: ${years} years, ${months} months, ${days} days`;
-  }
-
-  updateTime();
-  setInterval(updateTime, 1000 * 60 * 60);
-</script>
 </head>
 <body>
 
     <!-- Main image -->
     <img src="/gwy/water.png" alt="ab" class="main-image">
+
+    <!-- Caption below main image -->
+    <div class="caption">Teddy Bday! 23rd April 2025</div>
+    <div class="caption" id="weeks"></div>
+    <div class="caption" id="yearsMonthsDays"></div>
 
     <!-- First 11 links -->
     <div class="section large-icon-grid icon-grid">
@@ -189,5 +163,38 @@
         <a href="https://sciencedaily.substack.com/">scidaily</a>
     </div>
 
+    <script>
+        function updateTime() {
+            const startDate = new Date(2025, 2, 23); // 23 March 2025
+            const now = new Date();
+
+            // Weeks difference
+            const diffMs = now - startDate;
+            const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+
+            // Years, months, days difference
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            document.getElementById("weeks").textContent = `Weeks: ${weeks}`;
+            document.getElementById("yearsMonthsDays").textContent = 
+                `Years/Months/Days: ${years} years, ${months} months, ${days} days`;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000 * 60 * 60);
+    </script>
 </body>
 </html>
