@@ -87,7 +87,28 @@
 <div id="weeks"></div>
 <div id="yearsMonthsDays"></div>
 
+
 <script>
+  // Prevent keyboard from showing on page load
+  window.addEventListener('load', () => {
+    // Blur any element that might be focused
+    if (document.activeElement) document.activeElement.blur();
+
+    // Optional: focus and immediately blur a hidden input to trick Android
+    const dummy = document.createElement('input');
+    dummy.style.position = 'absolute';
+    dummy.style.opacity = 0;
+    dummy.style.height = 0;
+    dummy.style.width = 0;
+    dummy.style.pointerEvents = 'none';
+    document.body.appendChild(dummy);
+    dummy.focus();
+    dummy.blur();
+    document.body.removeChild(dummy);
+  });
+</script>
+
+    <script>
   function updateTime() {
     const startDate = new Date(2025, 2, 23); // 23 March 2025
     const now = new Date();
@@ -119,29 +140,6 @@
 
   updateTime();
   setInterval(updateTime, 1000 * 60 * 60);
-</script>
-
-
-
-
-<script>
-  // Prevent keyboard from showing on page load
-  window.addEventListener('load', () => {
-    // Blur any element that might be focused
-    if (document.activeElement) document.activeElement.blur();
-
-    // Optional: focus and immediately blur a hidden input to trick Android
-    const dummy = document.createElement('input');
-    dummy.style.position = 'absolute';
-    dummy.style.opacity = 0;
-    dummy.style.height = 0;
-    dummy.style.width = 0;
-    dummy.style.pointerEvents = 'none';
-    document.body.appendChild(dummy);
-    dummy.focus();
-    dummy.blur();
-    document.body.removeChild(dummy);
-  });
 </script>
 </head>
 <body>
