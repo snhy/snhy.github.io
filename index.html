@@ -23,12 +23,12 @@
 
         .caption {
             font-size: 16px;
-            color: #ff6347;
+            color: #ADD8E6;  /* light blue */
             text-align: center;
             margin-bottom: 5px;
             white-space: nowrap;
-            text-decoration: underline;
-            font-weight: bold;
+            text-decoration: none;  /* remove underline */
+            font-weight: normal;    /* remove bold */
         }
 
         .age-values {
@@ -103,7 +103,7 @@
     <img src="/gwy/water.png" alt="ab" class="main-image">
 
     <!-- Caption with weeks -->
-    <div class="caption" id="birthday-caption">Teddy Bday: 23 April 2025, 0 weeks old</div>
+    <div class="caption" id="birthday-caption">Teddy Bday: 23 March 2025, 0 weeks old</div>
     <div class="age-values" id="yearsMonthsDays"></div>
 
     <!-- First 11 links -->
@@ -153,7 +153,7 @@
 
             // Update years/months/days values underneath
             document.getElementById("yearsMonthsDays").textContent =
-                `${years} years / ${months} months  / ${days} days`;
+                `${years} years / ${months} months / ${days} days`;
         }
 
         updateTime();
