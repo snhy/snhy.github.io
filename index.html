@@ -13,6 +13,10 @@
             padding: 0;
         }
 
+        img {
+            color-scheme: only light; /* prevent dark mode color inversion */
+        }
+
         .main-image {
             width: 40%;
             max-width: 150px;
@@ -23,7 +27,7 @@
 
         .caption {
             font-size: 16px;
-            color: #ADD8E6;  /* light blue */
+            color: #ADD8E6;
             text-align: center;
             margin-bottom: 5px;
             white-space: nowrap;
@@ -48,27 +52,36 @@
         }
 
         .icon-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
             justify-content: center;
+            gap: 10px;
+        }
+
+        /* First (main) section: 3 across */
+        .large-icon-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Other sections: 6 across */
+        .small-icon-grid {
+            grid-template-columns: repeat(6, 1fr);
         }
 
         .icon-grid a {
-            margin: 10px;
             display: block;
         }
 
         .icon-grid img {
             width: 80px;
             height: auto;
+            display: block;
+            margin: auto;
         }
 
         .large-icon-grid img {
             width: 120px;
-            height: auto;
         }
 
-        /* === Mobile layout === */
         @media (max-width: 600px) {
             .main-image {
                 width: 60%;
@@ -79,36 +92,16 @@
                 font-size: 1.2em;
             }
 
-            .icon-grid {
-                justify-content: center;
-                flex-wrap: wrap;
+            .large-icon-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .icon-grid a {
-                padding: 5px;
-                box-sizing: border-box;
-                margin: 0;
+            .small-icon-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            /* Large icons: 3 across */
-            .large-icon-grid a {
-                flex: 0 0 33.33%;
-                max-width: 33.33%;
-            }
-
-            .large-icon-grid img {
-                width: 90%;
-                height: auto;
-            }
-
-            /* Small icons: 6 across */
-            .small-icon-grid a {
-                flex: 0 0 16.66%;
-                max-width: 16.66%;
-            }
-
-            .small-icon-grid img {
-                width: 80%;
+            .icon-grid img {
+                width: 100%;
                 height: auto;
             }
         }
@@ -119,7 +112,7 @@
     <!-- Main image -->
     <img src="/gwy/water.png" alt="ab" class="main-image">
 
-    <!-- Birthday caption with weeks and age -->
+    <!-- Birthday caption -->
     <div class="caption" id="birthday-caption">Teddy Bday: 23 March 2025, 0 weeks old</div>
     <div class="age-values" id="yearsMonthsDays"></div>
 
@@ -133,7 +126,7 @@
         <a href="https://next-episode.net/"><img src="/gwy/nextep.png" alt="Next Episode"></a>
     </div>
 
-    <!-- Blog section -->
+    <!-- Design section -->
     <div class="section">
         <div class="section-title">BLUG</div>
         <div class="small-icon-grid icon-grid">
@@ -141,15 +134,6 @@
             <a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a>
             <a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="PixelJoint"></a>
             <a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" alt="Explain That Stuff"></a>
-            
-            <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://ask.metafilter.com/home/popularfavorites"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://b3ta.com/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://nimblebit.com/#portfolio"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://crossword-solver.io/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://nimblebit.com/#portfolio"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://nimblebit.com/#portfolio"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-
         </div>
     </div>
 
@@ -163,7 +147,7 @@
         </div>
     </div>
 
-    <!-- Tools section -->
+    <!-- Etc section -->
     <div class="section">
         <div class="section-title">etc</div>
         <div class="small-icon-grid icon-grid">
@@ -196,7 +180,9 @@
             const now = new Date();
 
             const diffMs = now - startDate;
-            const weeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
+            const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const weeks = Math.floor(totalDays / 7);
+            const daysAfterWeeks = totalDays % 7;
 
             let years = now.getFullYear() - startDate.getFullYear();
             let months = now.getMonth() - startDate.getMonth();
@@ -213,9 +199,11 @@
                 months += 12;
             }
 
+            // Caption with weeks + days
             document.getElementById("birthday-caption").textContent =
-                `Teddy Bday: 23 March 2025, ${weeks} weeks old`;
+                `Teddy Bday: 23 March 2025, ${weeks} weeks and ${daysAfterWeeks} days old`;
 
+            // Detailed Y/M/D underneath
             document.getElementById("yearsMonthsDays").textContent =
                 `${years} years / ${months} months / ${days} days`;
         }
@@ -223,6 +211,5 @@
         updateTime();
         setInterval(updateTime, 1000 * 60 * 60); // update every hour
     </script>
-
 </body>
 </html>
