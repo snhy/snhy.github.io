@@ -14,7 +14,9 @@
         }
 
         img {
-            color-scheme: only light; /* prevent dark mode color inversion */
+            -webkit-user-drag: none;
+            user-select: none;
+            color-scheme: only light;
         }
 
         .main-image {
@@ -31,7 +33,6 @@
             text-align: center;
             margin-bottom: 5px;
             white-space: nowrap;
-            text-decoration: none;
             font-weight: normal;
         }
 
@@ -57,12 +58,12 @@
             gap: 10px;
         }
 
-        /* First (main) section: 3 across */
+        /* First section: 6 across desktop */
         .large-icon-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
         }
 
-        /* Other sections: 6 across */
+        /* Other sections: 6 across desktop */
         .small-icon-grid {
             grid-template-columns: repeat(6, 1fr);
         }
@@ -73,6 +74,7 @@
 
         .icon-grid img {
             width: 80px;
+            max-width: 100%;
             height: auto;
             display: block;
             margin: auto;
@@ -80,6 +82,7 @@
 
         .large-icon-grid img {
             width: 120px;
+            max-width: 100%;
         }
 
         @media (max-width: 600px) {
@@ -92,17 +95,18 @@
                 font-size: 1.2em;
             }
 
+            /* First section: 3 across mobile */
             .large-icon-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .small-icon-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
 
+            /* Other sections: 5 across mobile */
+            .small-icon-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
             .icon-grid img {
-                width: 100%;
-                height: auto;
+                width: 80%;
             }
         }
     </style>
@@ -118,39 +122,34 @@
 
     <!-- First links -->
     <div class="section large-icon-grid icon-grid">
-        <a href="https://www.abc.net.au/news/"><img src="/gwy/abc.png" alt="ABC"></a>
-        <a href="https://news.com.au"><img src="/gwy/newscomau.png" alt="News.com.au"></a>
-        <a href="https://petrolspy.com.au"><img src="/gwy/petrol.png" alt="PetrolSpy"></a>
-        <a href="https://app.jarr.info/"><img src="/gwy/jarr.png" alt="Jarr"></a>
-        <a href="https://www.ozbargain.com.au/"><img src="/gwy/ozbargain.png" alt="OzBargain"></a>
-        <a href="https://next-episode.net/"><img src="/gwy/nextep.png" alt="Next Episode"></a>
+        <a href="https://www.abc.net.au/news/" target="_blank" rel="noopener noreferrer"><img src="/gwy/abc.png" alt="ABC"></a>
+        <a href="https://news.com.au" target="_blank" rel="noopener noreferrer"><img src="/gwy/newscomau.png" alt="News.com.au"></a>
+        <a href="https://petrolspy.com.au" target="_blank" rel="noopener noreferrer"><img src="/gwy/petrol.png" alt="PetrolSpy"></a>
+        <a href="https://app.jarr.info/" target="_blank" rel="noopener noreferrer"><img src="/gwy/jarr.png" alt="Jarr"></a>
+        <a href="https://www.ozbargain.com.au/" target="_blank" rel="noopener noreferrer"><img src="/gwy/ozbargain.png" alt="OzBargain"></a>
+        <a href="https://next-episode.net/" target="_blank" rel="noopener noreferrer"><img src="/gwy/nextep.png" alt="Next Episode"></a>
     </div>
 
     <!-- Blog section -->
     <div class="section">
         <div class="section-title">blug</div>
         <div class="small-icon-grid icon-grid">
-            <a href="https://www.yankodesign.com"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://designyoutrust.com/"><img src="/gwy/design.png" alt="Design You Trust"></a>
-            <a href="https://pixeljoint.com/"><img src="/gwy/pixel.png" alt="PixelJoint"></a>
-            <a href="https://www.explainthatstuff.com/random.php"><img src="/gwy/exp.png" alt="Explain That Stuff"></a>
-
-            <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://ask.metafilter.com/home/popularfavorites"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://b3ta.com/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://nimblebit.com/#portfolio"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://crossword-solver.io/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            
-            <a href="https://webcurios.co.uk/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://82mhz.net/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://whatsinmynow.substack.com/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://www.recomendo.com/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://garstipsandtools.com/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://www.thingsmagazine.net/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            <a href="https://omnitools.app/"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
-            
-
-            
+            <a href="https://www.yankodesign.com" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Yanko"></a>
+            <a href="https://designyoutrust.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/design.png" alt="Design You Trust"></a>
+            <a href="https://pixeljoint.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/pixel.png" alt="PixelJoint"></a>
+            <a href="https://www.explainthatstuff.com/random.php" target="_blank" rel="noopener noreferrer"><img src="/gwy/exp.png" alt="Explain That Stuff"></a>
+            <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Wikipedia"></a>
+            <a href="https://ask.metafilter.com/home/popularfavorites" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="AskMeFi"></a>
+            <a href="https://b3ta.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="B3ta"></a>
+            <a href="https://nimblebit.com/#portfolio" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Nimblebit"></a>
+            <a href="https://crossword-solver.io/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Crossword Solver"></a>
+            <a href="https://webcurios.co.uk/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="WebCurios"></a>
+            <a href="https://82mhz.net/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="82MHz"></a>
+            <a href="https://whatsinmynow.substack.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Substack"></a>
+            <a href="https://www.recomendo.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Recomendo"></a>
+            <a href="https://garstipsandtools.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Garstips"></a>
+            <a href="https://www.thingsmagazine.net/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Things Magazine"></a>
+            <a href="https://omnitools.app/" target="_blank" rel="noopener noreferrer"><img src="/gwy/yanko.jpg" alt="Omnitools"></a>
         </div>
     </div>
 
@@ -158,9 +157,9 @@
     <div class="section">
         <div class="section-title">3d</div>
         <div class="small-icon-grid icon-grid">
-            <a href="https://www.printables.com/"><img src="/gwy/printables.png" alt="Printables"></a>
-            <a href="https://cults3d.com/en"><img src="/gwy/cults3d.png" alt="Cults3D"></a>
-            <a href="https://thangs.com/?sort=trending"><img src="/gwy/thangs.png" alt="Thangs"></a>
+            <a href="https://www.printables.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/printables.png" alt="Printables"></a>
+            <a href="https://cults3d.com/en" target="_blank" rel="noopener noreferrer"><img src="/gwy/cults3d.png" alt="Cults3D"></a>
+            <a href="https://thangs.com/?sort=trending" target="_blank" rel="noopener noreferrer"><img src="/gwy/thangs.png" alt="Thangs"></a>
         </div>
     </div>
 
@@ -168,27 +167,27 @@
     <div class="section">
         <div class="section-title">tools</div>
         <div class="small-icon-grid icon-grid">
-            <a href="https://www.iloveimg.com/"><img src="/gwy/loveimg.png" alt="ILoveImg"></a>
-            <a href="https://www.photopea.com/"><img src="/gwy/ppea.png" alt="Photopea"></a>
-            <a href="https://www.flaticon.com/"><img src="/gwy/flaticon.png" alt="Flaticon"></a>
-            <a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua"><img src="/gwy/noun.png" alt="Noun Project"></a>
-            <a href="https://www.phylopic.org/"><img src="/gwy/phylopic.png" alt="Phylopic"></a>
-            <a href="https://www.ilovepdf.com/"><img src="/gwy/lovepdf.png" alt="ILovePDF"></a>
-            <a href="https://www.printfriendly.com/"><img src="/gwy/pfriend.png" alt="PrintFriendly"></a>
-            <a href="https://rentry.co/megathread-all-purpose"><img src="/gwy/mega.png" alt="Rentry"></a>
-            <a href="https://snhy.github.io/tv.html"><img src="/gwy/stv.png" alt="STV"></a>
-            <a href="https://snhy.github.io/sndb.html"><img src="/gwy/sound.png" alt="Sound"></a>
+            <a href="https://www.iloveimg.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/loveimg.png" alt="ILoveImg"></a>
+            <a href="https://www.photopea.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/ppea.png" alt="Photopea"></a>
+            <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/flaticon.png" alt="Flaticon"></a>
+            <a href="https://thenounproject.com/search/icons/?iconspage=1&q=Chihuahua" target="_blank" rel="noopener noreferrer"><img src="/gwy/noun.png" alt="Noun Project"></a>
+            <a href="https://www.phylopic.org/" target="_blank" rel="noopener noreferrer"><img src="/gwy/phylopic.png" alt="Phylopic"></a>
+            <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/lovepdf.png" alt="ILovePDF"></a>
+            <a href="https://www.printfriendly.com/" target="_blank" rel="noopener noreferrer"><img src="/gwy/pfriend.png" alt="PrintFriendly"></a>
+            <a href="https://rentry.co/megathread-all-purpose" target="_blank" rel="noopener noreferrer"><img src="/gwy/mega.png" alt="Rentry"></a>
+            <a href="https://snhy.github.io/tv.html" target="_blank" rel="noopener noreferrer"><img src="/gwy/stv.png" alt="STV"></a>
+            <a href="https://snhy.github.io/sndb.html" target="_blank" rel="noopener noreferrer"><img src="/gwy/sound.png" alt="Sound"></a>
         </div>
     </div>
 
     <!-- Extra links -->
     <div class="section">
-        <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions">Misconceptions</a> |
-        <a href="https://ask.metafilter.com/">Askmefi</a> |
-        <a href="https://b3ta.com/">b3ta</a> |
-        <a href="https://dailypuzz.com/index.html">dailypuzz</a> |
-        <a href="https://www.wordplays.com/crossword-solver/crossword">xwordsolver</a> |
-        <a href="https://sciencedaily.substack.com/">scidaily</a>
+        <a href="https://en.m.wikipedia.org/wiki/List_of_common_misconceptions" target="_blank" rel="noopener noreferrer">Misconceptions</a> |
+        <a href="https://ask.metafilter.com/" target="_blank" rel="noopener noreferrer">Askmefi</a> |
+        <a href="https://b3ta.com/" target="_blank" rel="noopener noreferrer">b3ta</a> |
+        <a href="https://dailypuzz.com/index.html" target="_blank" rel="noopener noreferrer">dailypuzz</a> |
+        <a href="https://www.wordplays.com/crossword-solver/crossword" target="_blank" rel="noopener noreferrer">xwordsolver</a> |
+        <a href="https://sciencedaily.substack.com/" target="_blank" rel="noopener noreferrer">scidaily</a>
     </div>
 
     <script>
@@ -216,17 +215,15 @@
                 months += 12;
             }
 
-            // Caption with weeks + days
             document.getElementById("birthday-caption").textContent =
                 `Teddy Bday: 23.03.25 ${weeks} wks & ${daysAfterWeeks} days old`;
 
-            // Detailed Y/M/D underneath
             document.getElementById("yearsMonthsDays").textContent =
                 `${years}y / ${months}m / ${days}d`;
         }
 
         updateTime();
-        setInterval(updateTime, 1000 * 60 * 60); // update every hour
+        setInterval(updateTime, 1000 * 60 * 60);
     </script>
 </body>
 </html>
