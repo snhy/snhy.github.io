@@ -23,23 +23,30 @@
             width: 40%;
             max-width: 150px;
             height: auto;
-            margin: 20px auto 5px auto;
+            margin: 20px auto 10px auto;
             display: block;
         }
 
-        .caption {
-            font-size: 16px;
-            color: #ADD8E6;
+        /* Birthday section */
+        .birthday-section {
+            color: white;
             text-align: center;
-            margin-bottom: 5px;
-            white-space: nowrap;
-            font-weight: normal;
+            margin-bottom: 25px;
         }
 
-        .age-values {
+        .birthday-line1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .birthday-line2 {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .birthday-line3 {
             font-size: 14px;
-            color: Tomato;
-            margin-bottom: 20px;
         }
 
         .section {
@@ -56,6 +63,7 @@
             display: grid;
             justify-content: center;
             gap: 10px;
+            padding: 0 10px;
         }
 
         /* First section: 6 across desktop */
@@ -116,9 +124,12 @@
     <!-- Main image -->
     <img src="/gwy/water.png" alt="ab" class="main-image">
 
-    <!-- Birthday caption -->
-    <div class="caption" id="birthday-caption"></div>
-    <div class="age-values" id="yearsMonthsDays"></div>
+    <!-- Birthday section -->
+    <div class="birthday-section">
+        <div class="birthday-line1" id="bdayTitle"></div>
+        <div class="birthday-line2" id="bdayWeeks"></div>
+        <div class="birthday-line3" id="bdayFull"></div>
+    </div>
 
     <!-- First links -->
     <div class="section large-icon-grid icon-grid">
@@ -182,7 +193,7 @@
 
     <script>
         function updateTime() {
-            const startDate = new Date(2025, 2, 23);
+            const startDate = new Date(2025, 2, 23); // 23 March 2025
             const now = new Date();
 
             const diffMs = now - startDate;
@@ -205,11 +216,9 @@
                 months += 12;
             }
 
-            document.getElementById("birthday-caption").textContent =
-                `Teddy Bday: 23.03.25 ${weeks} wks & ${daysAfterWeeks} days old`;
-
-            document.getElementById("yearsMonthsDays").textContent =
-                `${years}y / ${months}m / ${days}d`;
+            document.getElementById("bdayTitle").textContent = "Teddys Bday: 23.03.25";
+            document.getElementById("bdayWeeks").textContent = `${weeks} wks and ${daysAfterWeeks} days old`;
+            document.getElementById("bdayFull").textContent = `${years} y - ${months} m - ${days} d`;
         }
 
         updateTime();
