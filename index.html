@@ -27,8 +27,8 @@
             text-align: center;
             margin-bottom: 5px;
             white-space: nowrap;
-            text-decoration: none;  /* remove underline */
-            font-weight: normal;    /* remove bold */
+            text-decoration: none;
+            font-weight: normal;
         }
 
         .age-values {
@@ -68,6 +68,7 @@
             height: auto;
         }
 
+        /* === Mobile layout === */
         @media (max-width: 600px) {
             .main-image {
                 width: 60%;
@@ -79,19 +80,35 @@
             }
 
             .icon-grid {
-                justify-content: flex-start;
+                justify-content: center;
+                flex-wrap: wrap;
             }
 
             .icon-grid a {
-                flex: 0 0 33.33%;
-                max-width: 33.33%;
                 padding: 5px;
                 box-sizing: border-box;
                 margin: 0;
             }
 
-            .icon-grid img {
-                width: 100%;
+            /* Large icons: 3 across */
+            .large-icon-grid a {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+
+            .large-icon-grid img {
+                width: 90%;
+                height: auto;
+            }
+
+            /* Small icons: 6 across */
+            .small-icon-grid a {
+                flex: 0 0 16.66%;
+                max-width: 16.66%;
+            }
+
+            .small-icon-grid img {
+                width: 80%;
                 height: auto;
             }
         }
@@ -106,7 +123,7 @@
     <div class="caption" id="birthday-caption">Teddy Bday: 23 March 2025, 0 weeks old</div>
     <div class="age-values" id="yearsMonthsDays"></div>
 
-    <!-- First 11 links -->
+    <!-- First links -->
     <div class="section large-icon-grid icon-grid">
         <a href="https://www.abc.net.au/news/"><img src="/gwy/abc.png" alt="ABC"></a>
         <a href="https://news.com.au"><img src="/gwy/newscomau.png" alt="News.com.au"></a>
@@ -187,11 +204,9 @@
                 months += 12;
             }
 
-            // Update caption with weeks
             document.getElementById("birthday-caption").textContent =
                 `Teddy Bday: 23 March 2025, ${weeks} weeks old`;
 
-            // Update years/months/days values underneath
             document.getElementById("yearsMonthsDays").textContent =
                 `${years} years / ${months} months / ${days} days`;
         }
@@ -199,5 +214,6 @@
         updateTime();
         setInterval(updateTime, 1000 * 60 * 60); // update every hour
     </script>
+
 </body>
 </html>
